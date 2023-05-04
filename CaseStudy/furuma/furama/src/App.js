@@ -1,9 +1,9 @@
 import logo from './logo.svg';
 import './App.css';
-import {HeaderFooter} from "./components/header_footer/HeaderFooter";
+import {CreateCustomer} from "./components/customer/CreateCustomer";
 
 function App() {
-  return <HeaderFooter/>
+  return <CreateCustomer/>
 }
 
 export default App;
