@@ -1,9 +1,9 @@
 import logo from './logo.svg';
 import './App.css';
-import {Contact} from "./components/Contact";
+import {Medical} from "./conponents/medical";
 
 function App() {
-  // return <Contact/>
+  return <Medical/>
 }
 
 export default App;
