@@ -1,10 +1,9 @@
 import logo from './logo.svg';
 import './App.css';
-
-import {ListCustomer} from "./components/customer/ListCustomer";
+import {Contact} from "./components/Contact";
 
 function App() {
-  return <ListCustomer/>
+  return <Contact/>
 }
 
 export default App;
