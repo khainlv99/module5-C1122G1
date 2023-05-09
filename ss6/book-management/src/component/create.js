@@ -1,29 +1,35 @@
 import React from "react";
 import { Formik, Form, Field } from "formik";
+import * as bookManagementService from "../service/bookManagementService";
 import { toast } from "react-toastify";
+import { useNavigate, NavLink } from "react-router-dom";
 import { Oval } from "react-loader-spinner";
-import bookService from "../service/bookService";
-import { Link, useNavigate } from "react-router-dom";
 
-function CreateBook() {
+function Create() {
   let navigate = useNavigate();
   return (
     <>
+      <NavLink to="/" className="btn btn-dark">
+        List
+      </NavLink>
       <Formik
         initialValues={{
           title: "",
           quantity: "",
         }}
         onSubmit={(values, { setSubmitting }) => {
-          console.log(values);
-          setSubmitting(false);
-          try {
-            bookService.save(values);
-            toast("Added successful");
-            navigate("/");
-          } catch (error) {
-            toast("Added failed");
-          }
+          const create = async () => {
+            console.log(values);
+            try {
+              await bookManagementService.save(values)
+              toast("Added failed");
+            } catch (error) {
+              toast("Added successful");
+              navigate("/");
+            }
+            setSubmitting(false);
+          };
+          create();
         }}
       >
         {({ isSubmitting }) => (
@@ -31,17 +37,17 @@ function CreateBook() {
             <h1>Add a new Book</h1>
             <div className="mb-3">
               <label htmlFor="title" style={{ width: "80px" }}>
-                Title
+                Title:
               </label>
-              <Field name="title" id="title" type="text" />
+              <Field id="title" name="title" />
             </div>
             <div className="mb-3">
               <label htmlFor="quantity" style={{ width: "80px" }}>
-                Quantity
+                Quantity:
               </label>
-              <Field name="quantity" id="quantity" type="number" />
+              <Field type="number" id="quantity" name="quantity" />
             </div>
-            {isSubmitting ? (
+            { isSubmitting ? (
               <Oval
                 height={80}
                 width={80}
@@ -55,12 +61,9 @@ function CreateBook() {
                 strokeWidthSecondary={2}
               />
             ) : (
-              <>
-                <button type="submit" className="btn btn-success me-2">
-                  Add
-                </button>
-                <Link to='/' className="btn btn-primary">Cancel</Link> 
-              </>
+              <button type="submit" className="btn btn-success">
+                Add
+              </button>
             )}
           </Form>
         )}
@@ -69,4 +72,4 @@ function CreateBook() {
   );
 }
 
-export default CreateBook;
+export default Create;
