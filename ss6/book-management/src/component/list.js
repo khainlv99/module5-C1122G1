@@ -16,11 +16,15 @@ function List() {
   const handleDelete = async (id) => {
     try {
       await bookManagementService.remove(id)
+      const result1= await bookManagementService.findAll();
+      setBookList(result1)
       toast.success("Deleted failed!");
     } catch (error) {
       toast.success("Deleted successfully!");
     }
-  };
+
+  }
+  ;
 
   return (
     <>
