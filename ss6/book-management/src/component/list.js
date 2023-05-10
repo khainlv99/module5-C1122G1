@@ -4,7 +4,7 @@ import { NavLink } from "react-router-dom";
 import { toast } from "react-toastify";
 
 function List() {
-  const [bookList, setBookList] = useState([]);
+  const [bookList, setBookList] = useState(null);
   useEffect(() => {
     const listAllBook = async () => {
       const result = await bookManagementService.findAll();
@@ -41,7 +41,7 @@ function List() {
           </tr>
         </thead>
         <tbody>
-          {bookList.map((book) => {
+          {bookList&&bookList.map((book) => {
             return (
               <tr key={book.id}>
                 <td>{book.title}</td>
