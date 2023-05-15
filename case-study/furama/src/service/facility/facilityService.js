@@ -45,9 +45,9 @@ export const save = async (facility) => {
     }
 }
 
-export const edit = async (facility) => {
+export const edit = async (id,facility) => {
     try{
-        await  axios.put(`http://localhost:3000/facilities/${facility.id}`,{...facility});
+        await axios.put(`http://localhost:3000/facilities/${id}`,{...facility});
     }catch (err){
         console.log(err);
     }

@@ -1,0 +1,53 @@
+{
+  "product": [
+    {
+      "id": 1,
+      "name": "Ao Ba Lo",
+      "date": "2023-05-15",
+      "number": "99",
+      "type": 3
+    },
+    {
+      "id": 2,
+      "name": "Khai dep",
+      "date": "03/08/1999",
+      "number": 11,
+      "type": 1
+    },
+    {
+      "id": 3,
+      "name": "asdffsa1234",
+      "date": "03/08/1999",
+      "number": 12,
+      "type": 1
+    },
+    {
+      "id": 4,
+      "name": "khai1",
+      "date": "03/08/1999",
+      "number": 13,
+      "type": 2
+    },
+    {
+      "name": "Ao Ba Lo12",
+      "date": "2023-05-15",
+      "number": "133",
+      "type": 2,
+      "id": 5
+    }
+  ],
+  "typeProduct": [
+    {
+      "id": 1,
+      "nameType": "Quan Ao"
+    },
+    {
+      "id": 2,
+      "nameType": "Giay"
+    },
+    {
+      "id": 3,
+      "nameType": "Mu"
+    }
+  ]
+}

@@ -78,7 +78,7 @@ function FacilityList() {
                                             {/*<i className="fas fa-trash-alt"></i>*/}
                                             Xóa
                                         </button>
-                                        <NavLink to={'/edit-facility/:id'}>
+                                        <NavLink to={`/edit-facility/${facility.id}`}>
                                         <button
                                             className="btn btn-primary btn-sm"
 

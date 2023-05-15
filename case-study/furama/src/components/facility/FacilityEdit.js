@@ -6,7 +6,7 @@ import * as Yup from "yup";
 import {Oval, TailSpin} from "react-loader-spinner";
 import {useEffect, useState} from "react";
 import facilityService from "../../service/facility/facilityService";
-import {Link, useNavigate} from "react-router-dom";
+import {Link, useNavigate, useParams} from "react-router-dom";
 
 export default function FacilityCreate() {
     let navigate = useNavigate();
@@ -14,28 +14,27 @@ export default function FacilityCreate() {
     const [facilityServices, setFacilityServices] = useState([]);
     const [facilityType, setFacilityType] = useState([]);
     const [facilityRentType, setFacilityRentType] = useState([])
+    const [facilityData, setFacilityData] = useState()
+    const param = useParams()
+
 
     useEffect(() => {
         getFacilityService();
-        getFacilityTypes();
-        getfacilityRentType();
-    }, []);
+        const fetchAPI = async () =>{
+            const result = await facilityService.findById(param.id)
+            setFacilityData(result)
+            const facilityTypeData = await facilityService.getFacilitiesTypes();
+            setFacilityType(facilityTypeData);
+            const rs = await facilityService.getRentType()
+            setFacilityRentType(rs)
+        }
+        fetchAPI()
+    }, [param.id]);
 
     const getFacilityService = async () => {
         const facilityServiceData = await facilityService.getFacilityService();
         setFacilityServices(facilityServiceData);
     };
-
-    const getFacilityTypes = async () => {
-        const facilityTypeData = await facilityService.getFacilitiesTypes();
-        setFacilityType(facilityTypeData);
-    };
-
-    const getfacilityRentType = async () => {
-        const rs = await facilityService.getRentType()
-        setFacilityRentType(rs)
-    }
-    getfacilityRentType()
 
     const handleFacilityChanged = (event) => {
         const villa = document.getElementById("villa");
@@ -67,31 +66,33 @@ export default function FacilityCreate() {
                 throw new Error("Value dịch vụ không hợp lệ");
         }
     };
+    if (!facilityData){
+        return null;
+    }
     return (
         <div>
             <Header/>
 
             <Formik initialValues={{
-                id: '', img: '', name: '', area: '', price: '', maxPeople: '',
-                rentType: '', facilityTypes: '', standardRoom: '', description: '',
-                poolArea: ''
-                , numberOfFloors: '', facilityFree: '', facilityService: []
+                id: facilityData.id, img: facilityData.img , name: facilityData.name , area: facilityData.area, price: facilityData.price , maxPeople: facilityData.maxPeople,
+                rentType: facilityData.rentType , facilityTypes: facilityData.facilityTypes, standardRoom: facilityData.standardRoom, description: facilityData.description,
+                poolArea: facilityData.poolArea
+                , numberOfFloors: facilityData.numberOfFloors, facilityFree: facilityData.facilityFree, facilityService: []
             }}
-                    validationSchema={Yup.object({
-                        name: Yup.string().required('Không được bỏ trống.'),
-                        area: Yup.number().required('Không được bỏ trống.'),
-                        img: Yup.string().required('Không được bỏ trống.'),
-                        price: Yup.number().required('Không được bỏ trống.'),
-                        maxPeople: Yup.number().required('Không được bỏ trống.'),
-                        standardRoom: Yup.string().required('Không được bỏ trống.'),
-                        description: Yup.string().required('Không được bỏ trống.'),
-                        poolArea: Yup.number().required('Không được bỏ trống.'),
-                        numberOfFloors: Yup.string().required('Không được bỏ trống.'),
-                        facilityFree: Yup.string().required('Không được bỏ trống.'),
-                    })}
+                    // validationSchema={Yup.object({
+                    //     name: Yup.string().required('Không được bỏ trống.'),
+                    //     img: Yup.string().required('Không được bỏ trống.'),
+                    //     price: Yup.number().required('Không được bỏ trống.'),
+                    //     maxPeople: Yup.number().required('Không được bỏ trống.'),
+                    //     standardRoom: Yup.string().required('Không được bỏ trống.'),
+                    //     description: Yup.string().required('Không được bỏ trống.'),
+                    //     poolArea: Yup.number().required('Không được bỏ trống.'),
+                    //     numberOfFloors: Yup.string().required('Không được bỏ trống.'),
+                    //     facilityFree: Yup.string().required('Không được bỏ trống.'),
+                    // })}
                     onSubmit={(values, {setSubmitting}) => {
                         try {
-                            facilityService.save(values);
+                            facilityService.edit(facilityData.id,values);
                             setSubmitting(false);
                             toast("Sửa thông tin dịch vụ thành công");
                             navigate("/facility");
@@ -227,9 +228,9 @@ export default function FacilityCreate() {
                                         <Field component="select" name="rentType" className="form-select"
                                                id="floatingSelect" aria-label="Floating label select example">
                                             {
-                                                facilityRentType?.map((facilityRentTypes) => (
-                                                    <option key={facilityRentTypes.id}
-                                                            value={facilityRentTypes.id}>{facilityRentTypes.name}</option>
+                                                facilityRentType?.map((rentTypes) => (
+                                                    <option key={rentTypes.id}
+                                                            value={rentTypes.id}>{rentTypes.name}</option>
                                                 ))
                                             }
                                         </Field>

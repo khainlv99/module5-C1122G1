@@ -1,0 +1,53 @@
+{
+  "book": [
+    {
+      "id": 1,
+      "name": "sieu nhan",
+      "type": 1
+    },
+    {
+      "id": 2,
+      "name": "sieu nhan1",
+      "type": 1
+    },
+    {
+      "id": 3,
+      "name": "sieu nhan2",
+      "type": 3
+    },
+    {
+      "id": 4,
+      "name": "khai",
+      "type": 1
+    },
+    {
+      "id": 5,
+      "name": "khai11111",
+      "type": 2
+    },
+    {
+      "id": 6,
+      "name": "123123",
+      "type": 2
+    },
+    {
+      "id": 7,
+      "name": "minh1123123",
+      "type": 3
+    }
+  ],
+  "typeBook": [
+    {
+      "id": 1,
+      "nameType": "khai"
+    },
+    {
+      "id": 2,
+      "nameType": "khai1"
+    },
+    {
+      "id": 3,
+      "nameType": "khai2"
+    }
+  ]
+}

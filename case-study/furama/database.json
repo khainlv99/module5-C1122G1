@@ -1,50 +1,5 @@
 {
-  "customers": [
-    {
-      "id": 2,
-      "name": "Tran Van Duy",
-      "dateOfBirth": "2020/12/12",
-      "gender": "2",
-      "identityNumb": "01253",
-      "phoneNumb": "090123",
-      "email": "123@gmail.com",
-      "customerTypes": 2,
-      "address": "abc"
-    },
-    {
-      "id": 3,
-      "name": "Nguyen Van Thanh",
-      "dateOfBirth": "2020/12/12",
-      "gender": "1",
-      "identityNumb": "01253",
-      "phoneNumb": "090123",
-      "email": "123@gmail.com",
-      "customerTypes": 1,
-      "address": "abc"
-    },
-    {
-      "id": 6,
-      "name": "Lisandra Colon",
-      "dateOfBirth": "2018-12-07",
-      "gender": "2",
-      "identityNumb": "1231231",
-      "phoneNumb": "12312313",
-      "email": "qodad@mailinator.com",
-      "customerTypes": 4,
-      "address": "Perspiciatis minus "
-    },
-    {
-      "id": 7,
-      "name": "Rooney Mcclure",
-      "dateOfBirth": "2014-07-29",
-      "gender": "2",
-      "identityNumb": "123123123",
-      "phoneNumb": "423423423",
-      "email": "bema@mailinator.com",
-      "customerTypes": 5,
-      "address": "Quia velit sed lauda"
-    }
-  ],
+  "customers": [],
   "customerTypes": [
     {
       "id": 1,
@@ -71,7 +26,7 @@
     {
       "id": 1,
       "img": "https://furamavietnam.com/wp-content/uploads/2018/03/Vietnam_Danang_Furama_Ocean-Suite-Feature-768x497.jpg",
-      "name": "PHÒNG SUITE HƯỚNG BIỂN",
+      "name": "PHÒNG1 SUITE HƯỚNG BIỂN",
       "area": "Diện tích phòng: 85.8 m2",
       "price": "20000",
       "maxPeople": 4,
@@ -82,9 +37,7 @@
       "poolArea": 6,
       "numberOfFloors": 5,
       "facilityFree": "massage",
-      "facilityService": [
-        "4"
-      ]
+      "facilityService": []
     },
     {
       "id": 3,
@@ -143,26 +96,6 @@
         "2",
         "3"
       ]
-    },
-    {
-      "name": "BIỆT THỰ HƯỚNG VƯỜN KHÔNG CÓ HỒ BƠI",
-      "area": "85.8m2",
-      "price": "2000",
-      "rentType": "2",
-      "img": "https://furamavietnam.com/wp-content/uploads/2018/08/Vietnam_Danang_Furama_Villas_Pool_Villas.jpg",
-      "maxPeople": "4",
-      "facilityTypes": 2,
-      "standardRoom": 1,
-      "description": "abc",
-      "poolArea": "30m2",
-      "numberFloors": "2",
-      "facilityFree": null,
-      "facilityService": [
-        "1",
-        "2",
-        "3"
-      ],
-      "id": 11
     }
   ],
   "facilityService": [
@@ -279,6 +212,36 @@
       "id": 5,
       "customers": "2",
       "facilities": "2"
+    },
+    {
+      "contractCode": "1",
+      "startDate": "2023-05-04",
+      "endDate": "2023-05-14",
+      "deposit": 11,
+      "totalMoney": 12,
+      "id": 6,
+      "customers": "3",
+      "facilities": "3"
+    },
+    {
+      "contractCode": "1",
+      "startDate": "2023-05-12",
+      "endDate": "2023-05-13",
+      "deposit": 1123,
+      "totalMoney": 1213,
+      "id": 7,
+      "customers": 3,
+      "facilities": 1
+    },
+    {
+      "contractCode": "1",
+      "startDate": "2023-05-11",
+      "endDate": "2023-05-12",
+      "deposit": 12,
+      "totalMoney": 1,
+      "id": 8,
+      "customers": 3,
+      "facilities": 1
     }
   ]
 }

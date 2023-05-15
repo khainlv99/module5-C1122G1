@@ -4,6 +4,7 @@ import {NavLink} from "react-router-dom";
 import ModalDeleteCustomer from "../modal/modalDeleteCustomer";
 import {useEffect, useState} from "react";
 import customerService from "../../service/customer/customerService";
+import {ToastContainer} from "react-toastify";
 
 function CustomerList() {
     const [customerList, setCustomerList] = useState([]);
@@ -109,6 +110,7 @@ function CustomerList() {
                 }}
             />
             <Footer/>
+            <ToastContainer/>
         </>
 
     )
