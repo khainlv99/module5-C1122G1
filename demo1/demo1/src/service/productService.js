@@ -2,7 +2,7 @@ import axios from "axios";
 
 export const findAll = async() => {
     try {
-        const result = await axios.get('http://localhost:3000/product')
+        const result = await axios.get('http://localhost:8080/product')
         return result.data
     }catch (error){
         console.log(error)
